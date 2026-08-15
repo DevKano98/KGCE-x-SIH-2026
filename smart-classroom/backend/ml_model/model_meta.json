@@ -1,0 +1,30 @@
+{
+  "weights": {
+    "attendance_percentage": 0.35,
+    "internal_marks": 0.3,
+    "assignment_score": 0.2,
+    "study_hours_per_week": 0.15
+  },
+  "thresholds": {
+    "high_risk_below": 50,
+    "medium_risk_below": 70
+  },
+  "dataset_summary": {
+    "rows": 326,
+    "class_score_bands": {
+      "High": {
+        "mean_score": 32.3,
+        "max_score": 47.3
+      },
+      "Medium": {
+        "mean_score": 64.8,
+        "min_score": 51.8,
+        "max_score": 72.5
+      },
+      "Low": {
+        "mean_score": 86.6,
+        "min_score": 70.0
+      }
+    }
+  }
+}

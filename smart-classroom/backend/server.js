@@ -1,0 +1,26 @@
+// backend/server.js
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './routes/auth.routes.js';
+import usersRoutes from './routes/users.routes.js';
+import subjectsRoutes from './routes/subjects.routes.js';
+import timetableRoutes from './routes/timetable.routes.js';
+import marksRoutes from './routes/marks.routes.js';
+import predictRoutes from './routes/predict.routes.js';
+import tutorRoutes from './routes/tutor.routes.js';
+import { requireAuth } from './middleware/auth.middleware.js';
+import studyplanRoutes from './routes/studyplan.routes.js';
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
+app.use('/api/auth', authRoutes);
+app.use('/api/users', requireAuth, usersRoutes);
+app.use('/api/subjects', requireAuth, subjectsRoutes);
+app.use('/api/timetable', requireAuth, timetableRoutes);
+app.use('/api/marks', requireAuth, marksRoutes);
+app.use('/api/predict', requireAuth, predictRoutes);
+app.use('/api/studyplan', requireAuth, studyplanRoutes);
+app.use('/api/tutor', requireAuth, tutorRoutes);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
